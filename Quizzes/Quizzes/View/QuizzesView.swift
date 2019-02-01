@@ -25,7 +25,6 @@ class QuizzesView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: UIScreen.main.bounds)
-    addSubview(myQuizzesCollectionView)
     setCollectionViewConstraints()
   }
   
@@ -36,6 +35,7 @@ class QuizzesView: UIView {
   
   
   func setCollectionViewConstraints() {
+    addSubview(myQuizzesCollectionView)
     myQuizzesCollectionView.translatesAutoresizingMaskIntoConstraints = false
     myQuizzesCollectionView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 1).isActive = true
     myQuizzesCollectionView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 1).isActive = true
