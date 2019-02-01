@@ -21,13 +21,13 @@ class TabBarController: UITabBarController {
     
     let quizTabBarController = QuizzesController()
     
-    quizTabBarController.tabBarItem = UITabBarItem(title: "Quizzes", image: UIImage(named: "quiz-icon"), tag: 0)
+    quizTabBarController.tabBarItem = UITabBarItem(title: "Quizzes", image: UIImage(named: "quizzes"), tag: 0)
     
     let searchTabBarController = SearchController()
     searchTabBarController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 1)
     
     let createTabBarController = CreateController()
-    createTabBarController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(named: "create-icon"), tag: 2)
+    createTabBarController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(named: "create"), tag: 2)
     
     let profileTabBarController = ProfileController()
     profileTabBarController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 3)

@@ -13,18 +13,12 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      view.backgroundColor = #colorLiteral(red: 0, green: 1, blue: 0.757725656, alpha: 1)
+      navigationItem.title = "Search Quizzes Online"
+      
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }
