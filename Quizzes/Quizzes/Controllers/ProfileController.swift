@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileController: UIViewController {
+  
+  var profileView = ProfileView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +18,7 @@ class ProfileController: UIViewController {
       view.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
       navigationItem.title = "Profile"
       
+      view.addSubview(profileView)
       
     }
     
