@@ -24,7 +24,7 @@ class SearchCollectionCell: UICollectionViewCell {
     
   }()
   
-  let searchLabel: UILabel = {
+  lazy var searchLabel: UILabel = {
     
     let label = UILabel()
     label.text = "Title for quizz from internet goes here"

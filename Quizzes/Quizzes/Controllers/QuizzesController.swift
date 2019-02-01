@@ -11,6 +11,7 @@ import UIKit
 class QuizzesController: UIViewController {
   
   let quizView = QuizzesView()
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()

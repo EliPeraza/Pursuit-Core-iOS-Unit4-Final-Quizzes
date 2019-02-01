@@ -11,6 +11,14 @@ import UIKit
 class SearchController: UIViewController {
   
   let searchView = SearchView()
+  
+  var factsFromInternet = [Quiz]() {
+    didSet{
+      DispatchQueue.main.async {
+        self.searchView.searchCollectionView.reloadData()
+      }
+    }
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +32,34 @@ class SearchController: UIViewController {
       searchView.searchCollectionView.dataSource = self
       searchView.searchCollectionView.delegate = self
       
+      getFacts()
     }
+  
+  func getFacts() {
+    QuizAPIClient.getQuizData { (appError, factsData) in
+      if let appError = appError {
+       print(appError.errorMessage())
+      }
+      if let data = factsData {
+       self.factsFromInternet = data
+      }
+    }
+  }
   
 }
 
 extension SearchController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return factsFromInternet.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = searchView.searchCollectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionCell", for: indexPath) as? SearchCollectionCell else {return UICollectionViewCell()}
     cell.backgroundColor = .white
+    
+    let currentFact = factsFromInternet[indexPath.row]
+    
+    cell.searchLabel.text = currentFact.quizTitle
     return cell
     
   }
