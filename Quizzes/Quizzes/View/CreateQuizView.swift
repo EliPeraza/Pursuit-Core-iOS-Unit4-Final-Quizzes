@@ -14,7 +14,7 @@ class CreateQuizView: UIView {
     let tf = UITextField()
     tf.placeholder = "Enter quiz title"
     tf.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-    tf.backgroundColor = .lightGray
+    tf.backgroundColor = .white
     return tf
     
   }()
@@ -23,7 +23,7 @@ class CreateQuizView: UIView {
     let ff = UITextView()
     ff.text = "Enter first fact"
     ff.textAlignment = .justified
-    ff.backgroundColor = .lightGray
+    ff.backgroundColor = .white
     ff.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
     return ff
   }()
@@ -32,7 +32,7 @@ class CreateQuizView: UIView {
     let sf = UITextView()
     sf.text = "Enter second fact"
     sf.textAlignment = .justified
-    sf.backgroundColor = .lightGray
+    sf.backgroundColor = .white
     sf.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
     
     return sf

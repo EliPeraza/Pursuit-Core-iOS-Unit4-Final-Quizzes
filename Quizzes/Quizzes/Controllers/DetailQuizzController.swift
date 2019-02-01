@@ -9,11 +9,16 @@
 import UIKit
 
 class DetailQuizzController: UIViewController {
+  
+  let detailView = DetailQuizView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
       view.backgroundColor = .white
+      
+      view.addSubview(detailView)
+      detailView.detailCollection.register(DetailCollectionCell.self, forCellWithReuseIdentifier: "DetailCollectionCell")
       
     }
     
