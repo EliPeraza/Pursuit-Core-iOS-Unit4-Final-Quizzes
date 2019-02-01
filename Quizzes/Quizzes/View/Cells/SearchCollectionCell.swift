@@ -14,7 +14,7 @@ class SearchCollectionCell: UICollectionViewCell {
    
     let button = UIButton()
     button.backgroundColor = .white
-    button.setTitle(". . .", for: .normal)
+    button.setImage(UIImage(named: "plus"), for: .normal)
     button.setTitleColor(UIColor.blue, for: .normal)
     
     //    button.addTarget(self, action: #selector(moreActionsButtonPressed), for: .touchUpInside)
@@ -28,7 +28,7 @@ class SearchCollectionCell: UICollectionViewCell {
     
     let label = UILabel()
     label.text = "Title for quizz from internet goes here"
-    label.textColor = .blue
+    label.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
     
     return label 
     
