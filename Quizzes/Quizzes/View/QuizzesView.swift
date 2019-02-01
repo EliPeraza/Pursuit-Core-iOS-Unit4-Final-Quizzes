@@ -13,7 +13,7 @@ class QuizzesView: UIView {
   lazy var myQuizzesCollectionView: UICollectionView = {
     
     let layoutForCollection = UICollectionViewFlowLayout()
-    layoutForCollection.itemSize = CGSize(width: 200, height: 250)
+    layoutForCollection.itemSize = CGSize(width: 175, height: 350)
     layoutForCollection.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
     
     let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layoutForCollection)
@@ -37,6 +37,7 @@ class QuizzesView: UIView {
   func setCollectionViewConstraints() {
     addSubview(myQuizzesCollectionView)
     myQuizzesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    
     myQuizzesCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
     
     myQuizzesCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
@@ -44,7 +45,11 @@ class QuizzesView: UIView {
     myQuizzesCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
     
     myQuizzesCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+   // myQuizzesCollectionView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+    //myQuizzesCollectionView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+    
   }
+  
   
   
 }

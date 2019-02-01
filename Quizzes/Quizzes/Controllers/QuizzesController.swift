@@ -20,8 +20,31 @@ class QuizzesController: UIViewController {
       
       self.view.addSubview(quizView)
       self.quizView.myQuizzesCollectionView.register(MyQuizCollectionCell.self, forCellWithReuseIdentifier: "QuizCollectionCell")
+      self.quizView.myQuizzesCollectionView.dataSource = self
+      self.quizView.myQuizzesCollectionView.delegate = self
 
     }
   
+}
+
+extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = quizView.myQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "QuizCollectionCell", for: indexPath) as? MyQuizCollectionCell else {return UICollectionViewCell() }
+    cell.backgroundColor = .white
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+     return CGSize(width: 190, height: 300)
+  }
+
+  
+  
+ 
+
 }
 

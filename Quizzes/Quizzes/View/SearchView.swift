@@ -13,7 +13,7 @@ class SearchView: UIView {
   lazy var searchCollectionView: UICollectionView = {
     
     let searchCollectionLayout = UICollectionViewFlowLayout()
-    searchCollectionLayout.itemSize = CGSize(width: 200, height: 200)
+    searchCollectionLayout.itemSize = CGSize(width: (self.bounds.width) / 2, height: (self.bounds.height) / 3)
     searchCollectionLayout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
     
     let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: searchCollectionLayout)

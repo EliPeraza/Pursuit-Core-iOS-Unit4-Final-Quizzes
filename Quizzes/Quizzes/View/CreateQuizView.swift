@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateQuizView: UIView {
-
+  
   lazy var quizTitle: UITextField = {
     let tf = UITextField()
     tf.placeholder = "Enter quiz title"
@@ -50,7 +50,7 @@ class CreateQuizView: UIView {
 }
 
 extension CreateQuizView {
-
+  
   func quizViewSetup() {
     
     quizTitleConstraints()
@@ -70,7 +70,7 @@ extension CreateQuizView {
   }
   
   func firstFactConstraints() {
-   addSubview(firstFact)
+    addSubview(firstFact)
     firstFact.translatesAutoresizingMaskIntoConstraints = false
     firstFact.topAnchor.constraint(equalTo: quizTitle.bottomAnchor, constant: 11).isActive = true
     firstFact.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
@@ -86,5 +86,5 @@ extension CreateQuizView {
     secondFact.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
     secondFact.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.35).isActive = true
   }
-
+  
 }
