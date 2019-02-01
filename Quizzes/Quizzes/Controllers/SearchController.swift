@@ -19,7 +19,7 @@ class SearchController: UIViewController {
       navigationItem.title = "Search Quizzes Online"
       
       view.addSubview(searchView)
-      searchView.searchCollectionView.register(SearchCollectionCell, forCellWithReuseIdentifier: "SearchCollectionCell")
+      searchView.searchCollectionView.register(SearchCollectionCell.self, forCellWithReuseIdentifier: "SearchCollectionCell")
       
     }
     

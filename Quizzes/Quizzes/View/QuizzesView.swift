@@ -37,8 +37,13 @@ class QuizzesView: UIView {
   func setCollectionViewConstraints() {
     addSubview(myQuizzesCollectionView)
     myQuizzesCollectionView.translatesAutoresizingMaskIntoConstraints = false
-    myQuizzesCollectionView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 1).isActive = true
-    myQuizzesCollectionView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 1).isActive = true
+    myQuizzesCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+    
+    myQuizzesCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+  
+    myQuizzesCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+    
+    myQuizzesCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
   }
   
   

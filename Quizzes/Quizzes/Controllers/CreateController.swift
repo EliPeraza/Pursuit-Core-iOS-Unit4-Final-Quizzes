@@ -9,6 +9,8 @@
 import UIKit
 
 class CreateController: UIViewController {
+  
+  let createQuiz = CreateQuizView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +18,10 @@ class CreateController: UIViewController {
       view.backgroundColor = #colorLiteral(red: 0.6349781752, green: 1, blue: 0.4726830721, alpha: 1)
       navigationItem.title = "Quiz Creation Central"
       
+      view.addSubview(createQuiz)
     }
+  
+
     
 
 

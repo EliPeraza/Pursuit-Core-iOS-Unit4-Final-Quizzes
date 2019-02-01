@@ -26,6 +26,7 @@ class SearchView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: UIScreen.main.bounds)
+    setupSearchCollectionConstraints()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -35,9 +36,13 @@ class SearchView: UIView {
   func setupSearchCollectionConstraints(){
    addSubview(searchCollectionView)
     searchCollectionView.translatesAutoresizingMaskIntoConstraints = false
-    searchCollectionView.centerXAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.centerXAnchor, multiplier: 1).isActive = true
-    searchCollectionView.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 1).isActive = true
+    searchCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
     
+    searchCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+    
+    searchCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+    
+    searchCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
   }
   
 }
