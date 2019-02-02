@@ -56,6 +56,10 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = searchView.searchCollectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionCell", for: indexPath) as? SearchCollectionCell else {return UICollectionViewCell()}
     cell.backgroundColor = .white
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+    cell.layer.cornerRadius = 15.0
+    
     
     let currentFact = factsFromInternet[indexPath.row]
     

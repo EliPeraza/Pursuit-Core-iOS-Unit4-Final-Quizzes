@@ -67,6 +67,8 @@ extension SearchCollectionCell{
     searchLabel.translatesAutoresizingMaskIntoConstraints = false
     searchLabel.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 0.5).isActive = true
     searchLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8).isActive = true
+    searchLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
+    searchLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11 ).isActive = true
   }
   
 
