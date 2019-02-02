@@ -19,7 +19,16 @@ class CreateController: UIViewController {
       navigationItem.title = "Quiz Creation Central"
       
       view.addSubview(createQuiz)
+      
+      let createButton = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createButtonTapped(_:)))
+      self.navigationItem.rightBarButtonItem = createButton
+      
     }
+  
+  @objc func createButtonTapped(_ sender: UIBarButtonItem!) {
+    //Right here I will create the object according to the model and save it to Documents Directory
+    // Before saving I need to check that there is text in both text views. Otherwise, display an alert
+  }
   
 
     

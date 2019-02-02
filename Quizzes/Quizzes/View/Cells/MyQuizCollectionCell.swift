@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol MyQuizzesMoreActionsDelegate: AnyObject {
+  func moreActionsButtonPressed()
+}
 
 
 class MyQuizCollectionCell: UICollectionViewCell {
+  
+  var delegate: MyQuizzesMoreActionsDelegate?
   
   let moreActionsButton: UIButton = {
     
@@ -18,11 +23,16 @@ class MyQuizCollectionCell: UICollectionViewCell {
     button.backgroundColor = .white
     button.setTitle(". . .", for: .normal)
     button.setTitleColor(#colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1), for: .normal)
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
     
-    //    button.addTarget(self, action: #selector(moreActionsButtonPressed), for: .touchUpInside)
+    button.addTarget(self, action: #selector(moreActionsButtonPressed), for: .touchUpInside)
+    
     return button
-    
   }()
+  
+  @objc func moreActionsButtonPressed() {
+    delegate?.moreActionsButtonPressed()
+  }
   
   lazy var title: UILabel = {
     
