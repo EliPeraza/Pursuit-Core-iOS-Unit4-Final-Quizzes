@@ -1,7 +1,6 @@
 //
 //  QuizAPIClient.swift
-//  Quizzes
-//
+//  Quizzes3//
 //  Created by Elizabeth Peraza  on 2/1/19.
 //  Copyright © 2019 Alex Paul. All rights reserved.
 //
@@ -10,7 +9,6 @@ import Foundation
 
 final class QuizAPIClient {
 
-  
   static func getQuizData(completionHandler: @escaping (AppError?, [Quiz]?) -> Void){
     
     let urlString = "http://5c4d4c0d0de08100147c59b5.mockapi.io/api/v1/quizzes"
@@ -28,8 +26,6 @@ final class QuizAPIClient {
         }
       }
     }
-    
-    
 }
 
 }

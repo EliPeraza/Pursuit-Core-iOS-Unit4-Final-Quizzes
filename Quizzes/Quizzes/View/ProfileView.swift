@@ -14,8 +14,9 @@ class ProfileView: UIView {
     
     let label = UILabel()
     label.text = "@ Marcio Damiano"
-    label.textColor = #colorLiteral(red: 0.06274510175, green: 0.1205586473, blue: 0.3033512155, alpha: 1)
+    label.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
     label.textAlignment = .center
+    label.font = UIFont(name: "Thonburi", size: 30)
     return label
   }()
   

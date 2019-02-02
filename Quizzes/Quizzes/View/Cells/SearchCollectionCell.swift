@@ -29,7 +29,8 @@ class SearchCollectionCell: UICollectionViewCell {
     let label = UILabel()
     label.text = "Title for quizz from internet goes here"
     label.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
-    
+    label.font = UIFont(name: "Thonburi", size: 16)
+    label.numberOfLines = 0 
     return label 
     
   }()

@@ -17,7 +17,7 @@ class MyQuizCollectionCell: UICollectionViewCell {
     let button = UIButton()
     button.backgroundColor = .white
     button.setTitle(". . .", for: .normal)
-    button.setTitleColor(UIColor.blue, for: .normal)
+    button.setTitleColor(#colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1), for: .normal)
     
     //    button.addTarget(self, action: #selector(moreActionsButtonPressed), for: .touchUpInside)
     return button
@@ -29,7 +29,9 @@ class MyQuizCollectionCell: UICollectionViewCell {
     let label = UILabel()
     label.text = "Title for quiz goes here"
     label.textColor = .blue
-    
+    label.numberOfLines = 0
+    label.textAlignment = .justified
+    label.font = UIFont(name: "Thonburi", size: 16)
     return label
   }()
   
@@ -58,9 +60,8 @@ extension MyQuizCollectionCell {
     title.translatesAutoresizingMaskIntoConstraints = false
     title.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 0.5).isActive = true
     title.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8).isActive = true
-    //TODO: Might need leading and trailing
-    //    title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-    //    title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
+    title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
+    title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
   }
   
   func moreActionsButtonConstraints() {

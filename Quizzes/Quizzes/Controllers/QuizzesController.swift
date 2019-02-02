@@ -16,7 +16,7 @@ class QuizzesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-    view.backgroundColor = #colorLiteral(red: 0, green: 0.8047454953, blue: 1, alpha: 1)
+    view.backgroundColor = .white
       navigationItem.title = "My Quizzes"
       
       self.view.addSubview(quizView)
@@ -36,11 +36,19 @@ extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegat
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = quizView.myQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "QuizCollectionCell", for: indexPath) as? MyQuizCollectionCell else {return UICollectionViewCell() }
     cell.backgroundColor = .white
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
      return CGSize(width: 190, height: 300)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    
+    
   }
 
   

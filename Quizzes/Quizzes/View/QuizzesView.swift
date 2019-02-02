@@ -16,9 +16,9 @@ class QuizzesView: UIView {
     layoutForCollection.itemSize = CGSize(width: 175, height: 350)
     layoutForCollection.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
     
+  
     let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layoutForCollection)
-    collectionView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-    
+    collectionView.backgroundColor = .white
     return collectionView
   }()
   

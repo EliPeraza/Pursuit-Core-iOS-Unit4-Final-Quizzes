@@ -12,9 +12,14 @@ class CreateQuizView: UIView {
   
   lazy var quizTitle: UITextField = {
     let tf = UITextField()
-    tf.placeholder = "Enter quiz title"
-    tf.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    tf.placeholder = "Enter quiz title here"
+    tf.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
     tf.backgroundColor = .white
+    tf.font = UIFont(name: "Thonburi", size: 20)
+    tf.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+    tf.layer.cornerRadius = 3.0
+    tf.layer.masksToBounds = true
+    tf.layer.borderWidth = 1.0
     return tf
     
   }()
@@ -24,7 +29,11 @@ class CreateQuizView: UIView {
     ff.text = "Enter first fact"
     ff.textAlignment = .justified
     ff.backgroundColor = .white
-    ff.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    ff.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
+    ff.font = UIFont(name: "Thonburi", size: 16)
+    ff.layer.cornerRadius = 3.0
+    ff.layer.borderWidth = 1.0
+    ff.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     return ff
   }()
   
@@ -33,8 +42,11 @@ class CreateQuizView: UIView {
     sf.text = "Enter second fact"
     sf.textAlignment = .justified
     sf.backgroundColor = .white
-    sf.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-    
+    sf.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
+    sf.font = UIFont(name: "Thonburi", size: 16)
+    sf.layer.cornerRadius = 3.0
+    sf.layer.borderWidth = 1.0
+    sf.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     return sf
   }()
   

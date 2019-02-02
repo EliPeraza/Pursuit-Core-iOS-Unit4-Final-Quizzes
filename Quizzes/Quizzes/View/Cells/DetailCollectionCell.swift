@@ -17,7 +17,8 @@ class DetailCollectionCell: UICollectionViewCell {
     tv.text = "Enter first fact"
     tv.textAlignment = .justified
     tv.backgroundColor = .lightGray
-    tv.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    tv.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
+    tv.font = UIFont(name: "Thonburi", size: 16)
     return tv
   }()
 
