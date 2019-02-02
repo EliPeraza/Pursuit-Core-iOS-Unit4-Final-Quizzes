@@ -69,7 +69,6 @@ extension MyQuizCollectionCell {
     addSubview(title)
     title.translatesAutoresizingMaskIntoConstraints = false
     title.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 0.5).isActive = true
-    title.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8).isActive = true
     title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
     title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
   }

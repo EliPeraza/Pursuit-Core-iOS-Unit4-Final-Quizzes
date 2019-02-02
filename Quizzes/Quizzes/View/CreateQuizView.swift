@@ -18,7 +18,6 @@ class CreateQuizView: UIView {
     tf.font = UIFont(name: "Thonburi", size: 20)
     tf.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     tf.layer.cornerRadius = 3.0
-    tf.layer.masksToBounds = true
     tf.layer.borderWidth = 1.0
     return tf
     

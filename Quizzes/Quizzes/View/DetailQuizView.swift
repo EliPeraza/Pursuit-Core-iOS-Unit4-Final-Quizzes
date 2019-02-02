@@ -14,7 +14,7 @@ class DetailQuizView: UIView {
   lazy var detailCollection: UICollectionView = {
     
     let detailCollectionLayout = UICollectionViewFlowLayout()
-    detailCollectionLayout.itemSize = CGSize(width: 200, height: 200)
+    detailCollectionLayout.itemSize = CGSize(width: (self.bounds.width) / 2, height: (self.bounds.height) / 3)
     detailCollectionLayout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
     
     let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: detailCollectionLayout)
@@ -44,6 +44,8 @@ class DetailQuizView: UIView {
     detailCollection.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
     
     detailCollection.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+    detailCollection.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+    detailCollection.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
   }
   
   

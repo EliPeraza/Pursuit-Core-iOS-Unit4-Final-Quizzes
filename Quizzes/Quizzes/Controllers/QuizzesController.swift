@@ -12,6 +12,14 @@ class QuizzesController: UIViewController {
   
   let quizView = QuizzesView()
   
+  var quizzes = [UserQuizzesFileManager]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.quizView.myQuizzesCollectionView.reloadData()
+      }
+    }
+  }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,12 +84,15 @@ extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegat
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
+//    let quizToSegue = quizzes[indexPath.row]
+    guard let cell = quizView.myQuizzesCollectionView.cellForItem(at: indexPath) as? MyQuizCollectionCell else { print("didSelectItemAt cell nil")
+      return
+    }
+    
+    let detailedVC = DetailQuizzController()
+    
+    navigationController?.pushViewController(detailedVC, animated: true)
     
   }
-  
-  
-  
-  
-  
 }
 
