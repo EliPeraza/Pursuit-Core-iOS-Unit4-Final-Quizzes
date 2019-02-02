@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol SaveButtonDelegate: AnyObject {
+  func saveButton()
+}
+
 class SearchCollectionCell: UICollectionViewCell {
+  
+  var delegate:  SaveButtonDelegate?
+
   
   lazy var addQuizButton: UIButton = {
    
@@ -17,12 +24,16 @@ class SearchCollectionCell: UICollectionViewCell {
     button.setImage(UIImage(named: "plus"), for: .normal)
     button.setTitleColor(UIColor.blue, for: .normal)
     
-    //    button.addTarget(self, action: #selector(moreActionsButtonPressed), for: .touchUpInside)
+    button.addTarget(self, action: #selector(saveQuizButtonPressed), for: .touchUpInside)
     
     return button
     
     
   }()
+  
+  @objc func saveQuizButtonPressed() {
+    delegate?.saveButton()
+  }
   
   lazy var searchLabel: UILabel = {
     

@@ -8,7 +8,9 @@
 
 import UIKit
 
+
 class SearchController: UIViewController {
+  
   
   let searchView = SearchView()
   
@@ -62,9 +64,18 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     
     
     let currentFact = factsFromInternet[indexPath.row]
-    
     cell.searchLabel.text = currentFact.quizTitle
+    
+    cell.addQuizButton.tag = indexPath.row
+    cell.addQuizButton.addTarget(self, action: #selector(saveButtonHasBeenPressed(_:)), for: .touchUpInside)
+    
+    
     return cell
+    
+  }
+  
+  @objc func saveButtonHasBeenPressed(_ sender: UIButton) {
+    
     
   }
   
