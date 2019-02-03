@@ -52,11 +52,11 @@ extension DetailQuizzController: UICollectionViewDataSource, UICollectionViewDel
     
     return cell
     
-    //TODO animate cell when selecting
     }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    //TODO animate cell when selecting
+
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
