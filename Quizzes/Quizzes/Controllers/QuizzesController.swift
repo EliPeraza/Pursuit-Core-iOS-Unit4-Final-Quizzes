@@ -78,6 +78,7 @@ extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegat
     
     let delete = UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive) { (delete) in
       UserQuizzesFileManager.delete(atIndex: index)
+      self.getDataFromDocumentsDirectory()
       // call function to get data and reload
       
     }
