@@ -12,7 +12,7 @@ class QuizzesController: UIViewController {
   
   let quizView = QuizzesView()
   
-  var quizzes = [UserQuizzesFileManager]() {
+  var quizzes = [UserStoredQuizzesModel]() {
     didSet {
       DispatchQueue.main.async {
         self.quizView.myQuizzesCollectionView.reloadData()
@@ -32,13 +32,26 @@ class QuizzesController: UIViewController {
     self.quizView.myQuizzesCollectionView.dataSource = self
     self.quizView.myQuizzesCollectionView.delegate = self
     
+    
+    
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    getDataFromDocumentsDirectory()
+  }
+  
+  func getDataFromDocumentsDirectory() {
+  self.quizzes = UserQuizzesFileManager.getFavoriteQuizzes()
+    self.quizView.myQuizzesCollectionView.reloadData()
+  }
+  
   
 }
 
 extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return quizzes.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,6 +63,9 @@ extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegat
     cell.moreActionsButton.tag = indexPath.row
     cell.moreActionsButton.addTarget(self, action: #selector(actionButtonPressed(_:)), for: .touchUpInside)
     
+    let currentQuiz = quizzes[indexPath.row]
+    
+    cell.title.text = currentQuiz.quizTitle
     
     return cell
   }
