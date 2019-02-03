@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ImageButtonDelegate: AnyObject {
+ func setImageFromLibrary()
+}
+
 class ProfileView: UIView {
+  
+  
+  var delegate: ImageButtonDelegate?
 
   let userNameLabel: UILabel = {
     
@@ -23,8 +30,14 @@ class ProfileView: UIView {
   let userImage: UIButton = {
     let imageButton = UIButton()
     imageButton.setImage(UIImage(named: "placeholder-image"), for: .normal)
+    
+    imageButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
     return imageButton
   }()
+  
+  @objc func imageButtonPressed() {
+    delegate?.setImageFromLibrary()
+  }
   
   override init(frame: CGRect) {
     super.init(frame: UIScreen.main.bounds)

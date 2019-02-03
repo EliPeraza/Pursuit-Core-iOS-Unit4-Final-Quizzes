@@ -13,6 +13,8 @@ class SearchController: UIViewController {
   
   
   let searchView = SearchView()
+  var labelTitle = ""
+  var factsFromOnline = [String]()
   
   var factsFromInternet = [Quiz]() {
     didSet{
@@ -66,16 +68,33 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     let currentFact = factsFromInternet[indexPath.row]
     cell.searchLabel.text = currentFact.quizTitle
     
+    labelTitle = currentFact.quizTitle
+    factsFromOnline = currentFact.facts
+    
     cell.addQuizButton.tag = indexPath.row
+    
     cell.addQuizButton.addTarget(self, action: #selector(saveButtonHasBeenPressed(_:)), for: .touchUpInside)
-    
-    
+
     return cell
     
   }
   
   @objc func saveButtonHasBeenPressed(_ sender: UIButton) {
     
+    let uuID = UUID().uuidString
+    
+    
+    let myQuiz = UserStoredQuizzesModel.init(createdAt: Date.getISOTimestamp(), id: uuID, quizTitle: labelTitle, facts: factsFromOnline)
+    
+    UserQuizzesFileManager.addEntry(quiz: myQuiz)
+    
+    let addedQuizAlert = UIAlertController.init(title: "Quiz was saved", message: nil, preferredStyle: .alert)
+    let ok = UIAlertAction.init(title: "Ok", style: .default) { (okPressed) in
+      self.dismiss(animated: true, completion: nil)
+    }
+    
+    addedQuizAlert.addAction(ok)
+    present(addedQuizAlert, animated: true, completion: nil)
     
   }
   

@@ -9,10 +9,11 @@
 import Foundation
 
 struct UserStoredQuizzesModel: Codable {
-  let imageData: Data
   let createdAt: String
   let id: String
   let quizTitle: String
   let facts: [String]
 }
+
+
 
