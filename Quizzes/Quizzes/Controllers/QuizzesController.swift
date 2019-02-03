@@ -101,12 +101,14 @@ extension QuizzesController: UICollectionViewDataSource, UICollectionViewDelegat
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-//    let quizToSegue = quizzes[indexPath.row]
+    let quizToSegue = quizzes[indexPath.row]
+    
     guard let cell = quizView.myQuizzesCollectionView.cellForItem(at: indexPath) as? MyQuizCollectionCell else { print("didSelectItemAt cell nil")
       return
     }
     
     let detailedVC = DetailQuizzController()
+    detailedVC.quizPassedFromMyQuizzesTab = quizToSegue
     
     navigationController?.pushViewController(detailedVC, animated: true)
     

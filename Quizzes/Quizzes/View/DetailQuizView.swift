@@ -19,7 +19,7 @@ class DetailQuizView: UIView {
     
     let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: detailCollectionLayout)
     
-    collectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+    collectionView.backgroundColor = .white
     
     return collectionView
   }()
