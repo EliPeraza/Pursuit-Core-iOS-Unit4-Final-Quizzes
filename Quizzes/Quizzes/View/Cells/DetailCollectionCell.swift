@@ -12,12 +12,12 @@ class DetailCollectionCell: UICollectionViewCell {
   
  
   
-  lazy var cellMessage: UITextView = {
-    let tv = UITextView()
+  lazy var cellMessage: UILabel = {
+    let tv = UILabel()
     tv.text = "Enter first fact"
     tv.textAlignment = .justified
     tv.backgroundColor = .white
-    tv.isEditable = false
+    tv.numberOfLines = 0
     tv.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
     tv.font = UIFont(name: "Thonburi", size: 16)
     return tv
@@ -39,11 +39,11 @@ class DetailCollectionCell: UICollectionViewCell {
     addSubview(cellMessage)
     cellMessage.translatesAutoresizingMaskIntoConstraints = false
     
-    cellMessage.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 1).isActive = true
+    cellMessage.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 0.5).isActive = true
     cellMessage.centerXAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.centerXAnchor, multiplier: 1).isActive = true
     
-    cellMessage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3).isActive = true
-    cellMessage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8).isActive = true
+    cellMessage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
+    cellMessage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
     
   }
 }
