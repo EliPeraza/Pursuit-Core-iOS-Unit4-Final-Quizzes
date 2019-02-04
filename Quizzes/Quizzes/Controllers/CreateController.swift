@@ -22,7 +22,7 @@ class CreateController: UIViewController {
       
       //Is there a user logged in?
       //yes? go on
-      //no? alert 
+      //no? alert
       
       
       let createButton = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createButtonTapped(_:)))
