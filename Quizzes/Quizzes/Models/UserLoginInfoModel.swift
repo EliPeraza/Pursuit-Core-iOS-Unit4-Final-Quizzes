@@ -9,6 +9,9 @@
 import Foundation
 
 struct UserLogginInfoModel: Codable {
+  let id: String
+  let createdAt: String
   let userImage: Data
   let userName: String
+  
 }

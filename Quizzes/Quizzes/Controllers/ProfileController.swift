@@ -12,14 +12,19 @@ class ProfileController: UIViewController {
   
   var doesUserNameExist = false
   var usernameEnteredByUser = ""
+  private var imagePickerController: UIImagePickerController!
+  
+  weak var cameraButton: UIBarButtonItem!
   
   var profileView = ProfileView()
-  
-  private var imagePickerController: UIImagePickerController!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    setupPhotoViewController()
+    
+    
     
     view.backgroundColor = .white
     navigationItem.title = "Profile"
@@ -47,18 +52,13 @@ class ProfileController: UIViewController {
           self.profileView.userNameLabel.text = self.usernameEnteredByUser
           UserDefaults.standard.set(self.usernameEnteredByUser, forKey: KeysForUserDefaults.userName)
           
-          
-          if existingUsername.lowercased() == self.usernameEnteredByUser.lowercased() {
-            
+          if existingUsername.lowercased() != self.usernameEnteredByUser.lowercased() {
             let welcomeMessage = UIAlertController.init(title: nil, message: "Thanks for logging in \(self.usernameEnteredByUser)", preferredStyle: .alert)
-            
             let ok = UIAlertAction.init(title: "Ok", style: .default) { (okPressed) in
               self.dismiss(animated: true, completion: nil)
             }
-            
             welcomeMessage.addAction(ok)
             self.present(welcomeMessage, animated: true, completion: nil)
-            
           }
         }
       }))
@@ -67,8 +67,43 @@ class ProfileController: UIViewController {
       self.present(alert, animated: true)
     }
     
-    
+    profileView.userImage.addTarget(self, action: #selector(photoLibraryButtonPressed(_:)), for: .touchUpInside)
     
   }
+  
 }
 
+
+extension ProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  private func showImagePickerController() {
+    present(imagePickerController, animated:  true, completion: nil)
+  }
+  
+  @objc private func photoLibraryButtonPressed(_ sender: UIButton) {
+    imagePickerController.sourceType = .photoLibrary
+    showImagePickerController()
+  }
+  
+  private func setupPhotoViewController() {
+    imagePickerController = UIImagePickerController()
+    imagePickerController.delegate = self
+    //    if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+    //      cameraButton.isEnabled = false
+    //    }
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      profileView.userImage.setImage(image, for: .normal)
+    } else {
+      print("original image is nil")
+    }
+    dismiss(animated: true, completion: nil)
+  }
+}

@@ -18,7 +18,7 @@ class ProfileView: UIView {
   
   var delegate: ImageButtonDelegate?
 
-  let userNameLabel: UILabel = {
+  lazy var userNameLabel: UILabel = {
     
     let label = UILabel()
     label.text = "@eli"
@@ -29,7 +29,7 @@ class ProfileView: UIView {
     return label
   }()
   
-  let userImage: UIButton = {
+  lazy var userImage: UIButton = {
     let imageButton = UIButton()
     imageButton.setImage(UIImage(named: "placeholder-image"), for: .normal)
     
