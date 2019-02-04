@@ -8,17 +8,19 @@
 
 import UIKit
 
-protocol SaveButtonDelegate: AnyObject {
-  func saveButton()
+protocol SearchCollectionCellDelegate: AnyObject {
+  func saveButton(_ searchCollectonCell: SearchCollectionCell, storedQuiz: Quiz)
 }
 
 class SearchCollectionCell: UICollectionViewCell {
   
-  var delegate:  SaveButtonDelegate?
-
+  weak var delegate:  SearchCollectionCellDelegate?
+  
+  private var currentQuiz: Quiz!
+  
   
   lazy var addQuizButton: UIButton = {
-   
+    
     let button = UIButton()
     button.backgroundColor = .white
     button.setImage(UIImage(named: "plus"), for: .normal)
@@ -32,7 +34,7 @@ class SearchCollectionCell: UICollectionViewCell {
   }()
   
   @objc func saveQuizButtonPressed() {
-    delegate?.saveButton()
+    delegate?.saveButton(self, storedQuiz: currentQuiz)
   }
   
   lazy var searchLabel: UILabel = {
@@ -55,19 +57,24 @@ class SearchCollectionCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  public func configureCell(storedQuiz: Quiz) {
+    currentQuiz = storedQuiz
+    searchLabel.text = storedQuiz.quizTitle
+  }
+  
 }
 
 extension SearchCollectionCell{
-
+  
   func setupSearchCellConstraints() {
     addQuizButtonConstraints()
     setupSearchLabel()
-  
+    
   }
   
   func addQuizButtonConstraints() {
     addSubview(addQuizButton)
-   addQuizButton.translatesAutoresizingMaskIntoConstraints = false
+    addQuizButton.translatesAutoresizingMaskIntoConstraints = false
     addQuizButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
     addQuizButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
     
@@ -82,6 +89,7 @@ extension SearchCollectionCell{
     searchLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11 ).isActive = true
   }
   
-
-
+  
+  
 }
+

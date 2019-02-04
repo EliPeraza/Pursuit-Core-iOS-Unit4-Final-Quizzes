@@ -13,8 +13,7 @@ class SearchController: UIViewController {
   
   
   let searchView = SearchView()
-  var labelTitle = ""
-  var factsFromOnline = [String]()
+  
   
   var factsFromInternet = [Quiz]() {
     didSet{
@@ -23,29 +22,29 @@ class SearchController: UIViewController {
       }
     }
   }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-      view.backgroundColor = .white
-      navigationItem.title = "Search Quizzes Online"
-      
-      view.addSubview(searchView)
-      searchView.searchCollectionView.register(SearchCollectionCell.self, forCellWithReuseIdentifier: "SearchCollectionCell")
-      
-      searchView.searchCollectionView.dataSource = self
-      searchView.searchCollectionView.delegate = self
-      
-      getFacts()
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    view.backgroundColor = .white
+    navigationItem.title = "Search Quizzes Online"
+    
+    view.addSubview(searchView)
+    searchView.searchCollectionView.register(SearchCollectionCell.self, forCellWithReuseIdentifier: "SearchCollectionCell")
+    
+    searchView.searchCollectionView.dataSource = self
+    searchView.searchCollectionView.delegate = self
+    
+    getFacts()
+  }
   
   func getFacts() {
     QuizAPIClient.getQuizData { (appError, factsData) in
       if let appError = appError {
-       print(appError.errorMessage())
+        print(appError.errorMessage())
       }
       if let data = factsData {
-       self.factsFromInternet = data
+        self.factsFromInternet = data
       }
     }
   }
@@ -64,29 +63,21 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
     cell.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     cell.layer.cornerRadius = 15.0
     
+    cell.delegate = self
     
-    let currentFact = factsFromInternet[indexPath.row]
-    cell.searchLabel.text = currentFact.quizTitle
+    let quiz = factsFromInternet[indexPath.row]
     
-    labelTitle = currentFact.quizTitle
-    factsFromOnline = currentFact.facts
+    cell.configureCell(storedQuiz: quiz)
     
-    cell.addQuizButton.tag = indexPath.row
     
-    cell.addQuizButton.addTarget(self, action: #selector(saveButtonHasBeenPressed(_:)), for: .touchUpInside)
-
+    
     return cell
     
   }
   
+  
   @objc func saveButtonHasBeenPressed(_ sender: UIButton) {
     
-    let uuID = UUID().uuidString
-    
-    
-    let myQuiz = UserStoredQuizzesModel.init(createdAt: Date.getISOTimestamp(), id: uuID, quizTitle: labelTitle, facts: factsFromOnline)
-    
-    UserQuizzesFileManager.addEntry(quiz: myQuiz)
     
     let addedQuizAlert = UIAlertController.init(title: "Quiz was saved", message: nil, preferredStyle: .alert)
     let ok = UIAlertAction.init(title: "Ok", style: .default) { (okPressed) in
@@ -101,6 +92,17 @@ extension SearchController: UICollectionViewDataSource, UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize.init(width: searchView.searchCollectionView.bounds.width - 30, height: (searchView.searchCollectionView.bounds.height) / 2)
   }
-  
+}
 
+extension SearchController: SearchCollectionCellDelegate {
+  func saveButton(_ searchCollectonCell: SearchCollectionCell, storedQuiz: Quiz) {
+    let uuID = UUID().uuidString
+    
+    let myQuiz = UserStoredQuizzesModel.init(createdAt: Date.getISOTimestamp(), id: uuID, quizTitle: storedQuiz.quizTitle, facts: storedQuiz.facts)
+    
+    
+    
+    UserQuizzesFileManager.addEntry(quiz: myQuiz)
+  }
+  
 }
