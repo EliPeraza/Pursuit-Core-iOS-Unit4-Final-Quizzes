@@ -20,6 +20,11 @@ class CreateController: UIViewController {
       
       view.addSubview(createQuiz)
       
+      //Is there a user logged in?
+      //yes? go on
+      //no? alert 
+      
+      
       let createButton = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(createButtonTapped(_:)))
       self.navigationItem.rightBarButtonItem = createButton
       

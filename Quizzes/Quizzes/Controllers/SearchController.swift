@@ -45,7 +45,8 @@ class SearchController: UIViewController {
        print(appError.errorMessage())
       }
       if let data = factsData {
-       self.factsFromInternet = data
+        
+        self.factsFromInternet = data.sorted{String($0.quizTitle.lowercased().first ?? "o") < String($1.quizTitle.lowercased().first ?? "o")}
       }
     }
   }
