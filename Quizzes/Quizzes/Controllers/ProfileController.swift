@@ -53,12 +53,17 @@ class ProfileController: UIViewController {
           UserDefaults.standard.set(self.usernameEnteredByUser, forKey: KeysForUserDefaults.userName)
           
           if existingUsername.lowercased() != self.usernameEnteredByUser.lowercased() {
+            
             let welcomeMessage = UIAlertController.init(title: nil, message: "Thanks for logging in \(self.usernameEnteredByUser)", preferredStyle: .alert)
             let ok = UIAlertAction.init(title: "Ok", style: .default) { (okPressed) in
               self.dismiss(animated: true, completion: nil)
             }
             welcomeMessage.addAction(ok)
             self.present(welcomeMessage, animated: true, completion: nil)
+          } else if existingUsername.lowercased() == self.usernameEnteredByUser.lowercased(){
+            let storedImage = UserLoginDataManager.getLoginInfo()
+            let imageFromData = storedImage[0].userImage
+            self.profileView.userImage.setImage(UIImage(data: imageFromData), for: .normal)
           }
         }
       }))
@@ -70,6 +75,8 @@ class ProfileController: UIViewController {
     profileView.userImage.addTarget(self, action: #selector(photoLibraryButtonPressed(_:)), for: .touchUpInside)
     
   }
+  
+  
   
 }
 
@@ -83,14 +90,12 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
   @objc private func photoLibraryButtonPressed(_ sender: UIButton) {
     imagePickerController.sourceType = .photoLibrary
     showImagePickerController()
+    
   }
   
   private func setupPhotoViewController() {
     imagePickerController = UIImagePickerController()
     imagePickerController.delegate = self
-    //    if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-    //      cameraButton.isEnabled = false
-    //    }
   }
   
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -99,8 +104,15 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
   
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-      profileView.userImage.setImage(image, for: .normal)
+    
+    if let imageToSet = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      profileView.userImage.setImage(imageToSet, for: .normal)
+      
+      let id = UUID().uuidString
+      let userToSave = UserLogginInfoModel.init(id: id, createdAt: Date.getISOTimestamp(), userImage: imageToSet.jpegData(compressionQuality: 0.5) ?? (UIImage(named: "placeholder-image")?.jpegData(compressionQuality: 0.5))! , userName: usernameEnteredByUser)
+      
+      UserLoginDataManager.addUser(user: userToSave)
+      
     } else {
       print("original image is nil")
     }
