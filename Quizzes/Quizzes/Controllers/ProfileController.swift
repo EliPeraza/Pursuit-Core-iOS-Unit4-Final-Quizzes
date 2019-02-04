@@ -26,31 +26,10 @@ class ProfileController: UIViewController {
     
     view.addSubview(profileView)
     
-    createAlertsForProfile()
+    let existingUsername = UserDefaults.standard.object(forKey: KeysForUserDefaults.userName) as? String ?? "no name stored"
     
-    self.profileView.userNameLabel.text = "Username"
-
-    if let storedUserName = UserDefaults.standard.object(forKey: KeysForUserDefaults.userName) as? String{
-      if storedUserName == usernameEnteredByUser {
-        profileView.userNameLabel.text = storedUserName
-//        let welcomeBackAlert = UIAlertController.init(title: "", message: "Welcome back \(storedUserName)!", preferredStyle: .alert)
-//        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//        welcomeBackAlert.addAction(ok)
-//        self.present(welcomeBackAlert, animated: true)
-      } else {
-        profileView.userNameLabel.text = usernameEnteredByUser
-        UserDefaults.standard.set(usernameEnteredByUser, forKey: KeysForUserDefaults.userName)
-//        let welcomeAlert = UIAlertController.init(title: "", message: "Welcome \(usernameEnteredByUser)!", preferredStyle: .alert)
-//        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//        welcomeAlert.addAction(ok)
-//        self.present(welcomeAlert, animated: true)
-      }
-    }
-  }
-
-  
-  
-  func createAlertsForProfile() {
+    profileView.userNameLabel.text = existingUsername
+    
     let alert = UIAlertController.init(title: "Enter User Name", message: "No spaces or special characters allowed", preferredStyle: .alert)
     
     alert.addTextField { (textField) in
@@ -62,19 +41,34 @@ class ProfileController: UIViewController {
       
       let cancel = (UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in}))
       let submit = (UIAlertAction(title: "Submit", style: .default, handler: { (action) in
-        let textField = alert.textFields![1]
-        
-        if let newUserName = textField.text{
-          print("Text field: \(newUserName)")
-          self.usernameEnteredByUser = newUserName
+        if let  textField = alert.textFields?[0]{
+          print("This is textfield \(textField)")
+          self.usernameEnteredByUser = textField.text ?? "Nothing"
+          self.profileView.userNameLabel.text = self.usernameEnteredByUser
+          UserDefaults.standard.set(self.usernameEnteredByUser, forKey: KeysForUserDefaults.userName)
+          
+          
+          if existingUsername.lowercased() == self.usernameEnteredByUser.lowercased() {
+            
+            let welcomeMessage = UIAlertController.init(title: nil, message: "Thanks for logging in \(self.usernameEnteredByUser)", preferredStyle: .alert)
+            
+            let ok = UIAlertAction.init(title: "Ok", style: .default) { (okPressed) in
+              self.dismiss(animated: true, completion: nil)
+            }
+            
+            welcomeMessage.addAction(ok)
+            self.present(welcomeMessage, animated: true, completion: nil)
+            
+          }
         }
       }))
-      
       alert.addAction(submit)
       alert.addAction(cancel)
       self.present(alert, animated: true)
     }
+    
+    
+    
   }
-  
 }
 

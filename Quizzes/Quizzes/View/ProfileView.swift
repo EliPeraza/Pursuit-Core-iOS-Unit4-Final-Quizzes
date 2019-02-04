@@ -12,6 +12,7 @@ protocol ImageButtonDelegate: AnyObject {
  func setImageFromLibrary()
 }
 
+
 class ProfileView: UIView {
   
   
@@ -20,10 +21,11 @@ class ProfileView: UIView {
   let userNameLabel: UILabel = {
     
     let label = UILabel()
-    label.text = "@ Marcio Damiano"
+    label.text = "@eli"
     label.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
     label.textAlignment = .center
     label.font = UIFont(name: "Thonburi", size: 30)
+    
     return label
   }()
   
