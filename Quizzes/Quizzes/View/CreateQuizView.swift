@@ -24,8 +24,8 @@ class CreateQuizView: UIView {
   }()
   
   lazy var firstFact: UITextView = {
+    
     let ff = UITextView()
-    ff.text = "Enter first fact"
     ff.textAlignment = .justified
     ff.backgroundColor = .white
     ff.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
@@ -38,7 +38,6 @@ class CreateQuizView: UIView {
   
   lazy var secondFact: UITextView = {
     let sf = UITextView()
-    sf.text = "Enter second fact"
     sf.textAlignment = .justified
     sf.backgroundColor = .white
     sf.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)

@@ -73,6 +73,11 @@ extension DetailQuizzController: UICollectionViewDataSource, UICollectionViewDel
         cell.cellMessage.text = self.factsArray[1]
       })
     }
+//    } else {
+//      UIView.transition(with: cell, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+//        cell.cellMessage.text = self.quizPassedFromMyQuizzesTab?.quizTitle
+//      })
+//    }
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
